@@ -1,7 +1,7 @@
 ---
 title: "Détection de fraude par carte de crédit — Sujet A"
 subtitle: "Projet d'examen — Machine Learning — M2 Génie Informatique"
-author: "[Nom, prénom à compléter]"
+author: "Samb Abdoulaye Sidy"
 date: "2026"
 ---
 
