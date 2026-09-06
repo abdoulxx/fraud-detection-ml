@@ -43,4 +43,11 @@ Exécuter le notebook de haut en bas. Toutes les figures et métriques présent�
 
 ## Utilisation d'outils d'IA
 
-À compléter avant la remise (section obligatoire du rapport) : lister précisément les outils utilisés et pour quelles tâches.
+- **Outil** : Claude Code (assistant IA en ligne de commande, Anthropic).
+- **Tâches assistées** :
+  - Mise en place de l'environnement local (création du venv, installation des dépendances, diagnostic et résolution d'un problème de bibliothèque native manquante — `libomp` — bloquant l'import de XGBoost/SHAP sur macOS).
+  - Exécution de bout en bout du notebook (`jupyter nbconvert --execute`) pour vérifier son bon fonctionnement et générer les figures et métriques réelles dans `reports/figures/`.
+  - Rédaction d'un premier jet de la section 7 (« Analyse critique et discussion ») du notebook, à partir des métriques et graphiques effectivement produits par l'exécution (matrice de confusion, AUC-PR/AUC-ROC, variance de validation croisée, feature importance).
+- **Non délégué** : le choix des trois familles de modèles, la stratégie de prétraitement (split avant scaling/SMOTE), les métriques d'évaluation et les hyperparamètres testés proviennent du notebook original écrit avant assistance IA.
+
+*(Cette section reflète l'usage réel fait pendant le développement ; à relire et ajuster avant la remise pour être certain de pouvoir justifier chaque point à l'oral, conformément à la politique du sujet.)*
