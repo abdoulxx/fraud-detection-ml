@@ -1,6 +1,6 @@
 # Détection de fraude par carte de crédit
 
-Projet d'examen — Machine Learning — M2 Génie Informatique.
+Projet — Machine Learning.
 Sujet : détection de transactions bancaires frauduleuses sur un jeu de données extrêmement déséquilibré.
 
 ## Jeu de données
