@@ -1,18 +1,19 @@
 # Détection de fraude par carte de crédit
 
-Projet d'examen — Machine Learning — M2 Génie Informatique (session 2026–2027).
-Sujet A : détection de transactions bancaires frauduleuses sur un jeu de données extrêmement déséquilibré.
+Projet d'examen — Machine Learning — M2 Génie Informatique.
+Sujet : détection de transactions bancaires frauduleuses sur un jeu de données extrêmement déséquilibré.
 
 ## Jeu de données
 
 [Credit Card Fraud Detection](https://www.kaggle.com/mlg-ulb/creditcardfraud) (Kaggle / Université Libre de Bruxelles).
 284 807 transactions, 492 frauduleuses (0,17 %). Variables `V1`–`V28` (ACP anonymisée), `Time`, `Amount`, cible `Class`.
 
-Le fichier `creditcard.csv` n'est pas versionné (voir `.gitignore`). Pour le récupérer :
+Le fichier `creditcard.csv` n'est pas versionné. Pour le récupérer :
 
-1. Créer un compte Kaggle et une clé API (`kaggle.json`).
-2. `kaggle datasets download -d mlg-ulb/creditcardfraud -p data/raw --unzip`
-3. Le fichier attendu est `data/raw/creditcard.csv`.
+1. Créer un compte Kaggle.
+2. Télécharger l'archive `.zip` du dataset depuis la [page Kaggle](https://www.kaggle.com/mlg-ulb/creditcardfraud) (bouton "Download").
+3. Décompresser l'archive et placer le fichier `creditcard.csv` dans `data/raw/`.
+4. Le fichier attendu est `data/raw/creditcard.csv`.
 
 ## Structure du projet
 
@@ -43,11 +44,10 @@ Exécuter le notebook de haut en bas. Toutes les figures et métriques présent�
 
 ## Utilisation d'outils d'IA
 
-- **Outil** : Claude Code (assistant IA en ligne de commande, Anthropic).
+- **Outil** : Claude Code (assistant IA en ligne de commande, Anthropic), utilisé sur deux machines (Windows puis macOS) à différentes étapes du projet.
 - **Tâches assistées** :
-  - Mise en place de l'environnement local (création du venv, installation des dépendances, diagnostic et résolution d'un problème de bibliothèque native manquante — `libomp` — bloquant l'import de XGBoost/SHAP sur macOS).
-  - Exécution de bout en bout du notebook (`jupyter nbconvert --execute`) pour vérifier son bon fonctionnement et générer les figures et métriques réelles dans `reports/figures/`.
-  - Rédaction d'un premier jet de la section 7 (« Analyse critique et discussion ») du notebook, à partir des métriques et graphiques effectivement produits par l'exécution (matrice de confusion, AUC-PR/AUC-ROC, variance de validation croisée, feature importance).
-- **Non délégué** : le choix des trois familles de modèles, la stratégie de prétraitement (split avant scaling/SMOTE), les métriques d'évaluation et les hyperparamètres testés proviennent du notebook original écrit avant assistance IA.
-
-*(Cette section reflète l'usage réel fait pendant le développement ; à relire et ajuster avant la remise pour être certain de pouvoir justifier chaque point à l'oral, conformément à la politique du sujet.)*
+  - Mise en place initiale du projet (Windows) : structure des dossiers, `requirements.txt`, `.gitignore`, squelette du notebook et du README, création du venv et installation des dépendances.
+  - Écriture du code des cellules du notebook (EDA, prétraitement, pipelines de modélisation, recherche d'hyperparamètres, évaluation, interprétabilité) à partir des consignes du sujet.
+  - Diagnostic et correction de deux bugs réels rencontrés en cours de développement : une fuite de données par 1081 lignes dupliquées (correctif : suppression avant le split train/test) et un plantage machine dû à un parallélisme imbriqué (`n_jobs=-1` simultanément sur `RandomForestClassifier` et `RandomizedSearchCV`, corrigé en limitant le parallélisme à un seul niveau).
+  - Sur macOS : diagnostic et résolution d'un problème de bibliothèque native manquante (`libomp`) bloquant l'import de XGBoost/SHAP.
+  - Aide à la rédaction du rapport écrit, rédigé par Samb Abdoulaye Sidy avec l'assistance de Claude Code pour la formulation et la structuration.
